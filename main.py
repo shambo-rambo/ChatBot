@@ -34,10 +34,10 @@ def main():
     st.header("History Essay Tutor 🤖")
 
     # sidebar with user input
-with st.sidebar:
-    # Set a default value for user_input in session state if it doesn't exist
-    if 'user_input' not in st.session_state:
-        st.session_state.user_input = ''
+    with st.sidebar:
+        # Set a default value for user_input in session state if it doesn't exist
+        if 'user_input' not in st.session_state:
+            st.session_state.user_input = ''
 
     # Create the widget
     user_input = st.text_input("Your message: ", value=st.session_state.user_input, key="user_input")
