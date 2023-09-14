@@ -44,7 +44,7 @@ def main():
                 response = chat(st.session_state.messages)
             st.session_state.messages.append(
                 AIMessage(content=response.content))
-            st.session_state.user_input = "" 
+            user_input = st.text_input("Your message: ", value="", key="user_input")
 
     # display message history, skipping the SystemMessage
     messages = st.session_state.get('messages', [])
