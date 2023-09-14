@@ -38,20 +38,25 @@ def main():
         user_input = st.text_input("Your message: ", key="user_input")
 
         # handle user input
+    if 'user_input' not in st.session_state:
+        st.session_state.user_input = ''
+    
+    user_input = st.text_input("Your message: ", value=st.session_state.user_input, key="user_input")
+    
     if user_input:
         st.session_state.messages.append(HumanMessage(content=user_input))
         with st.spinner("Thinking..."):
             response = chat(st.session_state.messages)
         st.session_state.messages.append(AIMessage(content=response.content))
-        st.session_state.user_input = ""  # Clear the session state value
-
-    # display message history, skipping the SystemMessage
-    messages = st.session_state.get('messages', [])
-    for i, msg in enumerate(messages[1:]):  # start from index 1 to skip the SystemMessage
-        if isinstance(msg, HumanMessage):
-            message(msg.content, is_user=True, key=str(i) + '_user')
-        elif isinstance(msg, AIMessage):
-            message(msg.content, is_user=False, key=str(i) + '_ai')
-
-if __name__ == '__main__':
-    main()
+        st.session_state.user_input = ""  # Reset the user input in the session state
+    
+        # display message history, skipping the SystemMessage
+        messages = st.session_state.get('messages', [])
+        for i, msg in enumerate(messages[1:]):  # start from index 1 to skip the SystemMessage
+            if isinstance(msg, HumanMessage):
+                message(msg.content, is_user=True, key=str(i) + '_user')
+            elif isinstance(msg, AIMessage):
+                message(msg.content, is_user=False, key=str(i) + '_ai')
+    
+    if __name__ == '__main__':
+        main()
