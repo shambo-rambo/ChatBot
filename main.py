@@ -38,7 +38,7 @@ def main():
         user_input = st.text_input("Your message: ", key="user_input")
 
         # handle user input
-        if user_input:
+    if user_input:
     st.session_state.messages.append(HumanMessage(content=user_input))
     with st.spinner("Thinking..."):
         response = chat(st.session_state.messages)
