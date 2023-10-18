@@ -51,7 +51,7 @@ def main():
             st.session_state.user_input = ""  # Reset the user input in the session state
 
         # Add this button to clear the text area
-        if st.button("Clear Text", key="on_click=clear_text"):
+        if st.button("Submit", key="on_click=clear_text"):
             clear_text_area()
 
     # display message history, skipping the SystemMessage
