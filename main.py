@@ -22,7 +22,7 @@ def main():
         model_name="gpt-4-0613"
     )
     
-    def clear_text_area():
+    def clear_text_():
         st.session_state.user_input = ""
     
     # initialize message history with instructions and greeting
@@ -51,7 +51,7 @@ def main():
             st.session_state.user_input = ""  # Reset the user input in the session state
 
         # Add this button to clear the text area
-        if st.button("Clear Text", key="clear_text_button"):
+        if st.button("Clear Text", key="on_click=clear_text"):
             clear_text_area()
 
     # display message history, skipping the SystemMessage
