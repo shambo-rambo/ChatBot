@@ -46,7 +46,6 @@ def main():
                 response = chat(st.session_state.messages)
             st.session_state.messages.append(AIMessage(content=response.content))
             st.session_state.user_input = ""  # Reset the user input in the session state
-            st.experimental_rerun()
 
     # display message history, skipping the SystemMessage
     messages = st.session_state.get('messages', [])
