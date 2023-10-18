@@ -21,7 +21,10 @@ def main():
         temperature=0,
         model_name="gpt-4-0613"
     )
+    def clear_text_area():
+        st.session_state.user_input = ""
 
+    
     # initialize message history with instructions and greeting
     if "messages" not in st.session_state:
         st.session_state.messages = [
@@ -35,10 +38,13 @@ def main():
     with st.sidebar:
         # Check if user_input exists in session state
         if "user_input" not in st.session_state:
-            st.session_state.user_input = ""
+               st.session_state.user_input = ""
 
         user_input = st.text_area("Your message: ", value=st.session_state.user_input, key="user_input_sidebar")
 
+        if st.button("Clear Text", key="clear_text_button"):
+            clear_text_area()
+        
         # handle user input
         if user_input:
             st.session_state.messages.append(HumanMessage(content=user_input))
