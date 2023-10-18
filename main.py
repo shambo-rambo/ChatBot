@@ -34,8 +34,8 @@ def main():
 
     st.header("History Essay Tutor 🤖")
 
-    # sidebar with user input
-    with st.sidebar:
+# sidebar with user input
+with st.sidebar:
     # Check if user_input exists in session state
     if "user_input" not in st.session_state:
         st.session_state.user_input = ""
@@ -53,14 +53,6 @@ def main():
     # Add this button to clear the text area
     if st.button("Clear Text", key="clear_text_button"):
         clear_text_area()
-        
-        # handle user input
-        if user_input:
-            st.session_state.messages.append(HumanMessage(content=user_input))
-            with st.spinner("Thinking..."):
-                response = chat(st.session_state.messages)
-            st.session_state.messages.append(AIMessage(content=response.content))
-            st.session_state.user_input = ""  # Reset the user input in the session state
 
     # display message history, skipping the SystemMessage
     messages = st.session_state.get('messages', [])
