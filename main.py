@@ -1,13 +1,3 @@
-import streamlit as st
-from streamlit_chat import message
-import os
-from langchain.chat_models import ChatOpenAI
-from langchain.schema import (
-    SystemMessage,
-    HumanMessage,
-    AIMessage
-)
-
 os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 
 # setup streamlit page
@@ -21,9 +11,9 @@ def main():
         temperature=0,
         model_name="gpt-4-0613"
     )
+    
     def clear_text_area():
         st.session_state.user_input = ""
-
     
     # initialize message history with instructions and greeting
     if "messages" not in st.session_state:
@@ -35,24 +25,24 @@ def main():
     st.header("History Essay Tutor 🤖")
 
 # sidebar with user input
-with st.sidebar:
-    # Check if user_input exists in session state
-    if "user_input" not in st.session_state:
-        st.session_state.user_input = ""
+    with st.sidebar:
+        # Check if user_input exists in session state
+        if "user_input" not in st.session_state:
+            st.session_state.user_input = ""
 
-    user_input = st.text_area("Your message: ", value=st.session_state.user_input, key="user_input_sidebar")
-    
-    # handle user input
-    if user_input:
-        st.session_state.messages.append(HumanMessage(content=user_input))
-        with st.spinner("Thinking..."):
-            response = chat(st.session_state.messages)
-        st.session_state.messages.append(AIMessage(content=response.content))
-        st.session_state.user_input = ""  # Reset the user input in the session state
+        user_input = st.text_area("Your message: ", value=st.session_state.user_input, key="user_input_sidebar")
 
-    # Add this button to clear the text area
-    if st.button("Clear Text", key="clear_text_button"):
-        clear_text_area()
+        # handle user input
+        if user_input:
+            st.session_state.messages.append(HumanMessage(content=user_input))
+            with st.spinner("Thinking..."):
+                response = chat(st.session_state.messages)
+            st.session_state.messages.append(AIMessage(content=response.content))
+            st.session_state.user_input = ""  # Reset the user input in the session state
+
+        # Add this button to clear the text area
+        if st.button("Clear Text", key="clear_text_button"):
+            clear_text_area()
 
     # display message history, skipping the SystemMessage
     messages = st.session_state.get('messages', [])
