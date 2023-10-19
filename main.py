@@ -34,25 +34,26 @@ def main():
 
     st.header("History Essay Tutor 🤖")
     
-    # sidebar with user input
+   # sidebar with user input
     with st.sidebar:
-        # Check if user_input exists in session state
-        if "user_input" not in st.session_state:
-            st.session_state.user_input = ""
-    
-        user_input = st.text_area("Your message: ", value=st.session_state.user_input, key="user_input_sidebar")
-    
-        # Add a submit button below the text area
-        submit_button = st.button("Submit")
-    
-        # handle user input when the submit button is clicked
-        if submit_button:
-            if user_input:
-                st.session_state.messages.append(HumanMessage(content=user_input))
-                with st.spinner("Thinking..."):
-                    response = chat(st.session_state.messages)
-                st.session_state.messages.append(AIMessage(content=response.content))
-                st.session_state.user_input = ""  # Reset the user input in the session state
+    # Check if user_input exists in session state
+    if "user_input" not in st.session_state:
+        st.session_state.user_input = ""
+
+    user_input = st.text_area("Your message: ", value=st.session_state.user_input, key="user_input_sidebar")
+
+    # Add a submit button below the text area
+    submit_button = st.button("Submit")
+
+    # handle user input when the submit button is clicked
+    if submit_button:
+        if user_input:
+            st.session_state.messages.append(HumanMessage(content=user_input))
+            with st.spinner("Thinking..."):
+                response = chat(st.session_state.messages)
+            st.session_state.messages.append(AIMessage(content=response.content))
+            st.session_state.user_input = ""  # Reset the user input in the session state
+
     
         # display message history, skipping the SystemMessage
         messages = st.session_state.get('messages', [])
