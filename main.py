@@ -22,7 +22,7 @@ def main():
         model_name="gpt-4-0613"
     )
     
-    def clear_text_():
+def clear_text_():
         st.session_state.user_input = ""
     
     # initialize message history with instructions and greeting
@@ -38,7 +38,7 @@ def main():
     with st.sidebar:
     # Check if user_input exists in session state
         if "user_input" not in st.session_state:
-        st.session_state.user_input = ""
+            st.session_state.user_input = ""
 
     user_input = st.text_area("Your message: ", value=st.session_state.user_input, key="user_input_sidebar")
 
