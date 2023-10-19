@@ -37,7 +37,7 @@ def main():
    # sidebar with user input
     with st.sidebar:
     # Check if user_input exists in session state
-    if "user_input" not in st.session_state:
+        if "user_input" not in st.session_state:
         st.session_state.user_input = ""
 
     user_input = st.text_area("Your message: ", value=st.session_state.user_input, key="user_input_sidebar")
