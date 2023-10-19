@@ -30,9 +30,8 @@ def main():
     
     st.header("History Essay Tutor 🤖")
         
-       # sidebar with user input
+    # sidebar with user input
     with st.sidebar:
-        # Check if user_input exists in session state
         if "user_input" not in st.session_state:
             st.session_state.user_input = ""
     
@@ -47,29 +46,28 @@ def main():
                 st.session_state.messages.append(AIMessage(content=response.content))
                 st.session_state.user_input = ""  # Reset the user input in the session state
 
+    # Moved this block out of the sidebar (corrected indentation)
+    messages = st.session_state.get('messages', [])
+    for i, msg in enumerate(messages[1:]):  # start from index 1 to skip the SystemMessage
+        if isinstance(msg, HumanMessage):
+            message(msg.content, is_user=True, key=str(i) + '_user')
+        elif isinstance(msg, AIMessage):
+            message(msg.content, is_user=False, key=str(i) + '_ai')
     
-        # display message history, skipping the SystemMessage
-        messages = st.session_state.get('messages', [])
-        for i, msg in enumerate(messages[1:]):  # start from index 1 to skip the SystemMessage
+    if st.button("Download Chat"):
+        chat_history = ""
+        for msg in st.session_state.messages:
             if isinstance(msg, HumanMessage):
-                message(msg.content, is_user=True, key=str(i) + '_user')
+                chat_history += f"User: {msg.content}\n"
             elif isinstance(msg, AIMessage):
-                message(msg.content, is_user=False, key=str(i) + '_ai')
+                chat_history += f"AI: {msg.content}\n"
     
-        if st.button("Download Chat"):
-            chat_history = ""
-            for msg in st.session_state.messages:
-                if isinstance(msg, HumanMessage):
-                    chat_history += f"User: {msg.content}\n"
-                elif isinstance(msg, AIMessage):
-                    chat_history += f"AI: {msg.content}\n"
-    
-            st.download_button(
-                label="Download Chat History",
-                data=chat_history,
-                file_name="chat_history.txt",
-                mime="text/plain"
-            )
+        st.download_button(
+            label="Download Chat History",
+            data=chat_history,
+            file_name="chat_history.txt",
+            mime="text/plain"
+        )
             
 if __name__ == '__main__':
     main()
