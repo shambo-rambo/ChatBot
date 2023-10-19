@@ -33,45 +33,49 @@ def main():
         ]
 
     st.header("History Essay Tutor 🤖")
-
-# sidebar with user input
+    
+    # sidebar with user input
     with st.sidebar:
         # Check if user_input exists in session state
         if "user_input" not in st.session_state:
             st.session_state.user_input = ""
-
+    
         user_input = st.text_area("Your message: ", value=st.session_state.user_input, key="user_input_sidebar")
-
-        # handle user input
-        if user_input:
-            st.session_state.messages.append(HumanMessage(content=user_input))
-            with st.spinner("Thinking..."):
-                response = chat(st.session_state.messages)
-            st.session_state.messages.append(AIMessage(content=response.content))
-            st.session_state.user_input = ""  # Reset the user input in the session state
-
-    # display message history, skipping the SystemMessage
-    messages = st.session_state.get('messages', [])
-    for i, msg in enumerate(messages[1:]):  # start from index 1 to skip the SystemMessage
-        if isinstance(msg, HumanMessage):
-            message(msg.content, is_user=True, key=str(i) + '_user')
-        elif isinstance(msg, AIMessage):
-            message(msg.content, is_user=False, key=str(i) + '_ai')
-
-    if st.button("Download Chat"):
-        chat_history = ""
-        for msg in st.session_state.messages:
+    
+        # Add a submit button below the text area
+        submit_button = st.button("Submit")
+    
+        # handle user input when the submit button is clicked
+        if submit_button:
+            if user_input:
+                st.session_state.messages.append(HumanMessage(content=user_input))
+                with st.spinner("Thinking..."):
+                    response = chat(st.session_state.messages)
+                st.session_state.messages.append(AIMessage(content=response.content))
+                st.session_state.user_input = ""  # Reset the user input in the session state
+    
+        # display message history, skipping the SystemMessage
+        messages = st.session_state.get('messages', [])
+        for i, msg in enumerate(messages[1:]):  # start from index 1 to skip the SystemMessage
             if isinstance(msg, HumanMessage):
-                chat_history += f"User: {msg.content}\n"
+                message(msg.content, is_user=True, key=str(i) + '_user')
             elif isinstance(msg, AIMessage):
-                chat_history += f"AI: {msg.content}\n"
-
-        st.download_button(
-            label="Download Chat History",
-            data=chat_history,
-            file_name="chat_history.txt",
-            mime="text/plain"
-        )
-
-if __name__ == '__main__':
-    main()
+                message(msg.content, is_user=False, key=str(i) + '_ai')
+    
+        if st.button("Download Chat"):
+            chat_history = ""
+            for msg in st.session_state.messages:
+                if isinstance(msg, HumanMessage):
+                    chat_history += f"User: {msg.content}\n"
+                elif isinstance(msg, AIMessage):
+                    chat_history += f"AI: {msg.content}\n"
+    
+            st.download_button(
+                label="Download Chat History",
+                data=chat_history,
+                file_name="chat_history.txt",
+                mime="text/plain"
+            )
+    
+    if __name__ == '__main__':
+        main()
