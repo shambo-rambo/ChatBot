@@ -58,5 +58,20 @@ def main():
         elif isinstance(msg, AIMessage):
             message(msg.content, is_user=False, key=str(i) + '_ai')
 
+    if st.button("Download Chat"):
+        chat_history = ""
+        for msg in st.session_state.messages:
+            if isinstance(msg, HumanMessage):
+                chat_history += f"User: {msg.content}\n"
+            elif isinstance(msg, AIMessage):
+                chat_history += f"AI: {msg.content}\n"
+
+        st.download_button(
+            label="Download Chat History",
+            data=chat_history,
+            file_name="chat_history.txt",
+            mime="text/plain"
+        )
+
 if __name__ == '__main__':
     main()
