@@ -24,7 +24,7 @@ def main():
     
     if "messages" not in st.session_state:
         st.session_state.messages = [
-            SystemMessage(content="You are a helpful assistant aiding students in crafting an essay paragraph using the S.T.E.A.L structure. The structure is defined as
+        SystemMessage(content="You are a helpful assistant aiding students in crafting an essay paragraph using the S.T.E.A.L structure. The structure is defined as
             Statement (S) A concise topic sentence answering a segment of the essay question. 
             Topic Elaboration (T): Contextualize the statement historically.
             Example (E): Reference a pertinent historical event or evidence.
@@ -37,7 +37,7 @@ def main():
             Independent Thinking: While the API provides guidance, users should be nudged to think critically and not rely solely on feedback.
             Conciseness Enforcer: Encourage inputs to be succinct, ideally below 250 words.."),
             
-            AIMessage(content="Hello! I'm here to assist you in crafting a STEAL paragraph for your essay. I'm here to guide you, not to write for you.\n\n To begin, please             share your essay question.\n\n Let's work together to make your writing shine!")
+        AIMessage(content="Hello! I'm here to assist you in crafting a STEAL paragraph for your essay. I'm here to guide you, not to write for you.\n\n To begin, please             share your essay question.\n\n Let's work together to make your writing shine!")
         ]
     
     st.header("Hamblin GPT 🤖")
