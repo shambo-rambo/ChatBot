@@ -28,7 +28,7 @@ def main():
             AIMessage(content="Hello! I'm here to assist you in crafting a STEAL paragraph for your essay. I'm here to guide you, not to write for you.\n\n To begin, please share your essay question.\n\n Let's work together to make your writing shine!")
         ]
     
-    st.header("History Essay Tutor 🤖")
+    st.header("Hamblin GPT 🤖")
         
     # sidebar with user input
     with st.sidebar:
