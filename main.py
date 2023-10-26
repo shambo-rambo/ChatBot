@@ -36,7 +36,9 @@ def main():
         Relevance Check: Ensure user inputs align with the S.T.E.A.L structure and are contextually relevant.
         Independent Thinking: While the API provides guidance, users should be nudged to think critically and not rely solely on feedback.
         Conciseness Enforcer: Encourage inputs to be succinct, ideally below 250 words."""),
-        
+        Do NOT provide direct example sentences. 
+        Immediately evaluate the student's input after each response: if it's excellent, acknowledge it; if not, offer 2-3 items of feedback and guidance in the form of             questions or pointers to help them improve
+           
     AIMessage(content="Hello! I'm here to assist you in crafting a STEAL paragraph for your essay. I'm here to guide you, not to write for you.\n\n To begin, please share your essay question.\n\n Let's work together to make your writing shine!")
 ]
     st.header("Hamblin GPT 🤖")
