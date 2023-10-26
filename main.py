@@ -33,7 +33,7 @@ def main():
         
         Dynamic Evaluation: Post user input, the system should assess its quality. Praise precise inputs and offer constructive feedback on vague or off-topic ones.
         Grammar & Syntax: Highlight spelling, word choice, and grammatical inaccuracies.
-        Relevance and Accuracy Check: Ensure user submissions align with the S.T.E.A.L. structure, are contextually pertinent, and factually accurate. If the user provides information that is off-topic or incorrect, prompt for clarification or correction.        
+        Relevance and Accuracy Check: Ensure user sentences align with the S.T.E.A.L. structure. Check if the content is correct and is similar to information you would use if writing this essay. If the user provides information that is off-topic or incorrect, encourage them to investigate or fact-check their information.        
         Independent Thinking: While the API provides guidance, users should be nudged to think critically and not rely solely on feedback.
         Conciseness Enforcer: Encourage inputs to be succinct, ideally below 250 words.
         Do NOT provide direct example sentences. 
