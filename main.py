@@ -40,6 +40,7 @@ def main():
     12. Interactive Learning: Recognize and incorporate user feedback for improved interactions.
     13. Review & Discuss: After completing the process, present the full outcome for discussion and potential enhancements.
     14. Open Dialogue: Allow students to discuss their work. If they seek specific content details, direct them to research rather than providing direct answers.
+    15. Users must write in 3rd person, no "I" or "we" or "you" to be used.
     
     SENTENCE RULES  - Follow at each sentence stage.
     
