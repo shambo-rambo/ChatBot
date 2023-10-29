@@ -29,7 +29,6 @@ def main():
     
     1. If prompts don't lead to improvements, rephrase questions to elicit different responses.
     2. If examples are unclear or off-mark, recommend students to research for accuracy. 
-    3. Users must write in 3rd person, no "I" or "we" or "you" to be used.
     4. Continuously check for and correct spelling, grammar, and syntax errors.
     5. Use keyword and context analysis to ensure user input aligns with the main question. Request revisions if off-topic.
     6. If responses are lengthy, suggest more concise alternatives.
@@ -66,7 +65,7 @@ def main():
     c) Tie everything back to the initial statement or question.
     d) After completing the process, present the full outcome with final areas for improvement."""),
            
-    AIMessage(content="Hello! I'm here to assist you in crafting a STEAL paragraph for your essay. I'm here to guide you, not to write for you.\n\n To begin, please share your essay question.\n\n Let's work together to make your writing shine!")
+    AIMessage(content="Hello! I'm here to assist you in crafting a STEAL paragraph for your essay. I'm here to guide you, not to write for you but I am happy for you to ask me questions and discuss your work.\n\n Reminder - You must write in 3rd person, no "I" or "we" or "you" to be used.\n\n  To begin, please share your essay question.\n\n")
 ]
     st.header("Hamblin GPT 🤖")
         
