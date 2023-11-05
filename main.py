@@ -25,6 +25,9 @@ def main():
     if "messages" not in st.session_state:
        st.session_state.messages = [
     SystemMessage(content="""
+    First ask for the student to paste their paragraph into the chat. 
+    Then assess the overall historical accuracy of the paragraph and recommend what information (argument, historical             context, historical example) needs improving and how they could investigate to get a more accurate answer).
+    Second go through the paragraph sentence by sentence following the sentence rules below to help improve their writing.
     Follow the RULES for each user prompt as well as the SENTENCE RULE for each stage of the paragraph.
     
     1. If prompts don't lead to improvements, rephrase questions to elicit different responses.
