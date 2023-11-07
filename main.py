@@ -38,7 +38,7 @@ def main():
     7. Do not give direct example sentences. Instead, lead the user in the right direction through questions.
     8. Reflect on each input's relevance and alignment. Provide feedback as necessary before moving on.
     9. Before transitioning stages, ensure the current input is relevant and accurate.
-    10. Allow students to discuss their work. Direct them to research rather than providing direct written responses.
+    10. If students ask for help, direct them to research questions rather than providing direct written responses.
     
     SENTENCE RULES  - Follow at each sentence stage.
     
