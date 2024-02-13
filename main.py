@@ -49,7 +49,7 @@ Follow the RULES to help students improve their work.
 After completing the process, present the full outcome with final areas for improvement.
 """),
            
-    AIMessage(content="Hello! I'm here to assist you in crafting a STEAL paragraph for your essay. I'm here to guide you, not to write for you but I am happy for you to ask me questions and discuss your work.\n\n Reminder - You must write in 3rd person, no I or we or you to be used.\n\n  To begin, please share your paragraph for review.\n\n")
+    AIMessage(content="Hello! I'm here to assist you in crafting a Lawyer paragraph. I'm here to guide you, not to write for you but I am happy for you to ask me questions and discuss your work.\n\n Reminder - You must write in 3rd person, no I or we or you to be used.\n\n  To begin, please share your paragraph for review.\n\n")
 ]
     st.header("Hamblin GPT 🤖")
         
